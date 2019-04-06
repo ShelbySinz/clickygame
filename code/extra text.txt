@@ -1,0 +1,33 @@
+var config = {
+    apiKey: "AIzaSyDz_0KKxD5xNCPQjwG-66J5Vjky4qM6-Lg",
+    authDomain: "uden-bootcamp-project-1-team-1.firebaseapp.com",
+    databaseURL: "https://uden-bootcamp-project-1-team-1.firebaseio.com",
+    projectId: "uden-bootcamp-project-1-team-1",
+    storageBucket: "uden-bootcamp-project-1-team-1.appspot.com",
+    messagingSenderId: "68929725202"
+  };
+  
+  firebase.initializeApp(config);
+ 
+  var database = firebase.database();
+
+
+   $(document.body).on("click", ".fa-heart", function () {
+         
+         var favSav = {
+          promoter : promoter,   
+          eventName: eventName,
+          eventURL: eventURL,
+          eventImage: eventImage,
+          localeventDate : localeventDate,
+          localeventTime : localeventTime,
+          venueCity : venueCity,
+          venueCountry : venueCountry
+         }
+     
+         database.ref().push(favSav);
+      });
+      database.ref().on("child_added", function(snapshot){
+       
+         console.log(snapshot.val());
+     });
